@@ -11,8 +11,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test.e2e": "cypress run",
-    "lint": "eslint"
+    "cy": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run.headed": "cypress run --headed",
+    "lint": "eslint",
+    "cy:record": "cypress run --record --key %CYPRESS_RECORD_KEY%"
   },
   "devDependencies": {
     "cypress": "^12.7.0",
