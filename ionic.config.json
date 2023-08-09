@@ -1,7 +1,0 @@
-{
-  "name": "zlink-project-cypress-testing",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
-}
