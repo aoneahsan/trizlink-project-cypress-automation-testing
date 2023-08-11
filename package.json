@@ -1,12 +1,28 @@
 {
-  "name": "zlink-cypress-testing",
+  "name": "zlink-project-cypress-testing",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "ZLink project testing using cypress. in this project we will write tests for our zlink project frontend, backend and API.",
+  "displayName": "ZLink Project Testing",
+  "engines": {
+    "node": "=16.20.1",
+    "npm": "Please use Yarn",
+    "yarn": "=1.22.19"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "private": true,
+  "scripts": {
+    "cy": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run.headed": "cypress run --headed",
+    "lint": "eslint",
+    "cy:record": "cypress run --record --key %CYPRESS_RECORD_KEY%"
+  },
+  "devDependencies": {
+    "cypress": "^12.17.3",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "eslint": "^8.35.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step_definitions"
+  }
 }
