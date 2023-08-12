@@ -9,7 +9,7 @@ import {
 let stub;
 Before(()=>{
   cy.log('Execution Statred');
-  stub=cy.stub()
+  // stub=cy.stub()
 })
 
 Given("I access the Z-Link Website", () => {
