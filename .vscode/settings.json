@@ -1,0 +1,12 @@
+{
+	"editor.formatOnSave": true,
+	"prettier.enable": true,
+	"prettier.singleQuote": true,
+	"prettier.arrowParens": "always",
+	"prettier.jsxSingleQuote": true,
+	"prettier.semi": true,
+	"prettier.trailingComma": "es5",
+	"prettier.singleAttributePerLine": true,
+	"prettier.quoteProps": "as-needed",
+	"files.autoSave": "onWindowChange"
+}
