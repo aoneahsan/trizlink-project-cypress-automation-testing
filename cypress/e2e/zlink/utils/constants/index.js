@@ -1,8 +1,2 @@
-// Page Elements Selectors
-const SELECTORS = {
-  pages: {
-    loginPage: {}
-  }
-}
-
-SELECTORS.pages.loginPage
+export * from './element-selectors'
+export * from './app-route-paths'

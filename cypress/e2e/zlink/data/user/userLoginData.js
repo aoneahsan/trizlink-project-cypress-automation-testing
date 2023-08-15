@@ -1,7 +1,6 @@
-export const userData = {
+export const userLoginData = {
   validEmail: 'ahsan@zaions.com',
   inValidEmail: 'asldjhalahsan@zaions.com',
-  // pw: password
   validPassword: 'asd123!@#',
   inValidPassword: 'asd123132!@#',
   username: 'ahsan'

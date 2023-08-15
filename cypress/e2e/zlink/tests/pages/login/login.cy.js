@@ -1,15 +1,17 @@
 /// <reference types= 'cypress' />
 
+import { userSignUpData, userLoginData } from '../../../data/user'
+import { getRandomStr, generatePasswordString } from '../../../utils/helpers'
+
 // Constants
-const loginMsg = 'Login successfully.'
-const validEmail = 'ahsan@zaions.com'
-const invalidEmailNote = 'EmailAddress needs to be a valid email.'
+const loginMsg = 'Login successfully.' // move to messages file
+const invalidEmailNote = 'EmailAddress needs to be a valid email.' // messages
 const reqEmail = 'EmailAddress is required'
-const validPasword = 'asd123!@#'
+const validPasword = 'asd123!@#' // data/[file-name]
 const shortPasMsg = 'Password needs to be at least 8 digits long.'
 const digitalPasMsg = 'Password must include a digit.'
 const specialChrcPasMsg = 'Password must include a special character.'
-const emailBtn = '[cy-es="ztes__lp-email-input"]'
+const emailBtn = '[cy-es="ztes__lp-email-input"]' // move to constants/element-selectors.js
 const paswordBtn = '[cy-es="ztes__lp-password-input"]'
 const orText = '.zaions__separator_OR'
 const loginBtn = '[cy-es="ztes__lp-password-input"]'
@@ -47,7 +49,7 @@ describe('login test via z-link website', () => {
     // );
     cy.get(loginBtn).click()
     cy.wait(2000)
-    cy.get('.Toastify__toast-body').should('contain', loginMesg)
+    cy.get('.Toastify__toast-body').should('contain', loginMsg)
   })
 
   it('should not be able to login via home page using invalid email and expect for an error regarding invalid email ', () => {
@@ -59,9 +61,12 @@ describe('login test via z-link website', () => {
       .should('contain', invalidEmailNote)
   })
 
-  it('check that if we enter the pasowrd and then clicking outside then again clicking on pas box, the previous pasword should be there ', () => {
-    cy.get(emailBtn).type(validEmail)
-    cy.get(paswordBtn).type('asd')
+  it.only('check that if we enter the pasowrd and then clicking outside then again clicking on pas box, the previous pasword should be there ', () => {
+    cy.log('userLoginData', userLoginData)
+    console.log({ userLoginData })
+
+    cy.get(emailBtn).type(userLoginData.validEmail)
+    cy.get(paswordBtn).type(getRandomStr())
     cy.get(orText).click()
     cy.get(pasErrorText).should('contain', shortPasMsg)
     cy.get(emailBtn).click()
@@ -76,14 +81,14 @@ describe('login test via z-link website', () => {
   })
 
   it('should not be able to login via home page using pasword except digit and expect for an error regarding invalid password and emial button should be disabled ', () => {
-    cy.get(emailBtn).type(validEmail)
-    cy.get(paswordBtn).type('asddsdsss')
+    cy.get(emailBtn).type(userLoginData.validEmail)
+    cy.get(paswordBtn).type(generatePasswordString(8, true, true, false))
     cy.get(orText).click()
     cy.get(pasErrorText).should('contain', digitalPasMsg)
     cy.get(loginBtn).should('not.be.enabled')
   })
   it('should not be able to login via home page using pasword except special character and expect for an error regarding invalid password and emial button should be disabled ', () => {
-    cy.get(emailBtn).type(validEmail)
+    cy.get(emailBtn).type(userLoginData.validEmail)
     cy.get(paswordBtn).type('asd12as1')
     cy.get(orText).click()
     cy.get(pasErrorText).should('contain', specialChrcPasMsg)
