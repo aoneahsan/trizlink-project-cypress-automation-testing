@@ -1,0 +1,7 @@
+{
+  "name": "trizlink-ionic-cypress-v1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
