@@ -7,7 +7,11 @@ export const SELECTORS = {
 			Email_Input_Text: '[cy-es="ztes__lp-email-input"]',
 			// password text to enter the password in the login page
 			Password_Input_Text: '[cy-es="ztes__lp-password-input"]',
+			// login button where user click on it to login in the account
 			Login_Button: '[cy-es="ztes__lp-login-btn"]',
 		},
+		WORKSPACE_PAGE:{
+			New_Workspace_TL_Button: '[cy-es="ztes__wlp-create-btn"]'
+		}
 	},
 } as const;
