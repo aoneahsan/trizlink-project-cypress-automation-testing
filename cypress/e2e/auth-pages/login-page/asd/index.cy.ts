@@ -1,10 +1,12 @@
-import { SELECTORS } from '../../../utils/selectors/element-selector';
-import { USER_DETAILS } from '../../../data/user/user-personal-data';
+import { SELECTORS } from '@trzSelectors/element-selector';
+import { USER_DETAILS } from '@trzData/user';
+
+var unused = 'ajsan';
 
 //Login page tests via using correct and wrong credentials (error-messages)
 describe('T1 - Login Page Test - Should be able to login using correct credentials', () => {
 	beforeEach('Open the website home page', () => {
-		//visit the home page of website (preetylinks.zaions.com)
+		// visit the home page of website (prettylinks.zaions.com)
 		cy.visit('/');
 		//home page login button at the header section
 		cy.get(SELECTORS.PAGES.LOGIN.Login_Button_HP).click();
