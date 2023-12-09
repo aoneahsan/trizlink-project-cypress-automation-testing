@@ -9,9 +9,14 @@ export const SELECTORS = {
 			Password_Input_Text: '[cy-es="ztes__lp-password-input"]',
 			// login button where user click on it to login in the account
 			Login_Button: '[cy-es="ztes__lp-login-btn"]',
+			Password_eye_icon: '[cy-es="ztes__lp-see-password-btn"]'
 		},
 		WORKSPACE_PAGE:{
 			New_Workspace_TL_Button: '[cy-es="ztes__wlp-create-btn"]'
-		}
+		},
+		GENERAL:{
+//OR Text( this is mainly to unfocused the text input field to get error messages)
+Or_Text: '.zaions__separator',
+		},
 	},
 } as const;
