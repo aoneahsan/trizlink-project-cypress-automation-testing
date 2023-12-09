@@ -9,7 +9,8 @@ export const SELECTORS = {
 			Password_Input_Text: '[cy-es="ztes__lp-password-input"]',
 			// login button where user click on it to login in the account
 			Login_Button: '[cy-es="ztes__lp-login-btn"]',
-			Password_eye_icon: '[cy-es="ztes__lp-see-password-btn"]'
+			Password_eye_icon: '[cy-es="ztes__lp-see-password-btn"]',
+			Forget_Password_Btn: '[cy-es="ztes__lp-forget-pw-btn"]'
 		},
 		WORKSPACE_PAGE:{
 			New_Workspace_TL_Button: '[cy-es="ztes__wlp-create-btn"]'
@@ -18,5 +19,9 @@ export const SELECTORS = {
 //OR Text( this is mainly to unfocused the text input field to get error messages)
 Or_Text: '.zaions__separator',
 		},
+		URLS:{
+			Login_Page: 'https://prettylinks.zaions.com/sign-in',
+			Forget_Password_Page:'https://prettylinks.zaions.com/forgot-password'
+		}
 	},
 } as const;
