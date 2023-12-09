@@ -1,52 +1,58 @@
 {
-	"name": "com.trizlink.app",
-	"private": true,
-	"version": "0.0.1",
-	"type": "module",
-	"scripts": {
-		"cy": "cypress open",
-		"test.e2e": "cypress run",
-		"start": "npm run cy",
-		"lint": "eslint ./cypress/**/*.ts",
-		"lint:fix": "eslint --fix ./cypress/**/*.ts"
-	},
-	"dependencies": {},
-	"devDependencies": {
-		"cypress": "^13.6.1",
-		"eslint": "^8.55.0",
-		"eslint-config-standard-with-typescript": "^42.0.0",
-		"eslint-plugin-cypress": "^2.15.1",
-		"typescript": "^5.3.3"
-	},
-	"description": "Trizlink project cypress automation testing project.",
-	"author": {
-		"url": "https://aoneahsan.com",
-		"email": "ahsan@zaions.com",
-		"name": "Ahsan Mahmood"
-	},
-	"engines": {
-		"node": "^20.10.0",
-		"npm": "Please use PNPM (v1.22.21)",
-		"yarn": "Please use PNPM (^8.12.0)",
-		"pnpm": "^8.12.0"
-	},
-	"keywords": [
-		"trizlink project cypress automation tests",
-		"zaions",
-		"aoneahsan",
-		"trizlink",
-		"cypress",
-		"software testing",
-		"automation testing"
-	],
-	"displayName": "Trizlink Cypress Tests",
-	"contributors": [
-		{
-			"email": "aqeel@zaions.com",
-			"name": "Aqeel Shahid",
-			"url": "https://www.linkedin.com/in/creativeaqeel"
-		}
-	],
-	"engineStrict": true,
-	"homepage": "https://trizlink.com"
+  "name": "com.trizlink.app",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "cy": "cypress open",
+    "test.e2e": "cypress run",
+    "start": "npm run cy",
+    "lint": "eslint ./cypress/**/*.ts",
+    "lint:fix": "eslint --fix ./cypress/**/*.ts",
+    "prettier:check": "prettier ./cypress --check",
+    "prettier:write": "prettier ./cypress --write --config='./.prettierrc' --log-level=warn",
+    "pre-commit": "npm run prettier:write"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.1",
+    "eslint": "^8.55.0",
+    "eslint-config-standard-with-typescript": "^42.0.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-cypress": "^2.15.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.3"
+  },
+  "description": "Trizlink project cypress automation testing project.",
+  "author": {
+    "url": "https://aoneahsan.com",
+    "email": "ahsan@zaions.com",
+    "name": "Ahsan Mahmood"
+  },
+  "engines": {
+    "node": "^20.10.0",
+    "npm": "Please use PNPM (v1.22.21)",
+    "yarn": "Please use PNPM (^8.12.0)",
+    "pnpm": "^8.12.0"
+  },
+  "keywords": [
+    "trizlink project cypress automation tests",
+    "zaions",
+    "aoneahsan",
+    "trizlink",
+    "cypress",
+    "software testing",
+    "automation testing"
+  ],
+  "displayName": "Trizlink Cypress Tests",
+  "contributors": [
+    {
+      "email": "aqeel@zaions.com",
+      "name": "Aqeel Shahid",
+      "url": "https://www.linkedin.com/in/creativeaqeel"
+    }
+  ],
+  "engineStrict": true,
+  "homepage": "https://trizlink.com",
+  "pre-commit": "pre-commit"
 }
