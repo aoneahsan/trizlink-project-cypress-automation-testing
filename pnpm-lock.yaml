@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@ionic/react':
-    specifier: ^7.5.7
-    version: 7.5.7(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^7.6.0
+    version: 7.6.0(react-dom@18.2.0)(react@18.2.0)
   '@ionic/react-router':
-    specifier: ^7.5.7
-    version: 7.5.7(react-dom@18.2.0)(react-router-dom@5.3.4)(react-router@5.3.4)(react@18.2.0)
+    specifier: ^7.6.0
+    version: 7.6.0(react-dom@18.2.0)(react-router-dom@5.3.4)(react-router@5.3.4)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -26,8 +26,8 @@ dependencies:
 
 devDependencies:
   '@types/react':
-    specifier: ^18.2.42
-    version: 18.2.42
+    specifier: ^18.2.43
+    version: 18.2.43
   '@types/react-dom':
     specifier: ^18.2.17
     version: 18.2.17
@@ -39,10 +39,10 @@ devDependencies:
     version: 5.3.3
   '@vitejs/plugin-legacy':
     specifier: ^5.2.0
-    version: 5.2.0(terser@5.25.0)(vite@5.0.6)
+    version: 5.2.0(terser@5.26.0)(vite@5.0.7)
   '@vitejs/plugin-react':
     specifier: ^4.2.1
-    version: 4.2.1(vite@5.0.6)
+    version: 4.2.1(vite@5.0.7)
   cypress:
     specifier: ^13.6.1
     version: 13.6.1
@@ -56,17 +56,17 @@ devDependencies:
     specifier: ^23.0.1
     version: 23.0.1
   terser:
-    specifier: ^5.25.0
-    version: 5.25.0
+    specifier: ^5.26.0
+    version: 5.26.0
   typescript:
-    specifier: ^5.3.2
-    version: 5.3.2
+    specifier: ^5.3.3
+    version: 5.3.3
   vite:
-    specifier: ^5.0.6
-    version: 5.0.6(terser@5.25.0)
+    specifier: ^5.0.7
+    version: 5.0.7(terser@5.26.0)
   vitest:
-    specifier: ^1.0.1
-    version: 1.0.1(jsdom@23.0.1)(terser@5.25.0)
+    specifier: ^1.0.3
+    version: 1.0.3(jsdom@23.0.1)(terser@5.26.0)
 
 packages:
 
@@ -1562,23 +1562,23 @@ packages:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
-  /@ionic/core@7.5.7:
-    resolution: {integrity: sha512-BVoKckmcC1kgRW5+ZGmzZMCXOjjaxq6D5lp0XzOpqUKBfyr8b39nkdJL2odQY2F1+jScChxk7wB5nubx4i3lUw==}
+  /@ionic/core@7.6.0:
+    resolution: {integrity: sha512-pDX8G915puz8OcLhxfb9MwuvpYZsUOCngJdd+61ibJ6UF+NA2mGatsMqHKzcgelTXtwcHDpi9ZLUD/HNmupqaQ==}
     dependencies:
       '@stencil/core': 4.8.1
       ionicons: 7.2.1
       tslib: 2.6.2
     dev: false
 
-  /@ionic/react-router@7.5.7(react-dom@18.2.0)(react-router-dom@5.3.4)(react-router@5.3.4)(react@18.2.0):
-    resolution: {integrity: sha512-E21SHWQ0WxZMXwBuNJ+yxlBgyPUf2Jf9Lm9iJlBS5h6wnZ7tfn1wmRlUP3cn8G6NkBOJb0DdEMN51a+wKgBAmw==}
+  /@ionic/react-router@7.6.0(react-dom@18.2.0)(react-router-dom@5.3.4)(react-router@5.3.4)(react@18.2.0):
+    resolution: {integrity: sha512-HJVXkkUppZ9jqXl4WsHwE4UqWYUphCDD7Vqw0C1iSR31WeF2kd4JqAsY3yrG97qH0HCyXeg05ph2fLVdGNL6pg==}
     peerDependencies:
       react: '>=16.8.6'
       react-dom: '>=16.8.6'
       react-router: ^5.0.1
       react-router-dom: ^5.0.1
     dependencies:
-      '@ionic/react': 7.5.7(react-dom@18.2.0)(react@18.2.0)
+      '@ionic/react': 7.6.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-router: 5.3.4(react@18.2.0)
@@ -1586,13 +1586,13 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@ionic/react@7.5.7(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+dY4Nyz/e0PAw/5bxg6rP+MfFwWIxom4PWoH7Hcm91mHNSfcmNdGuc4D/Hp4TMld7cnlXCr0JVzPqXJGxqn78g==}
+  /@ionic/react@7.6.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2hjTQlxwONH7rcIu1iJ219a6teegTa28DSIxUVZ032f7bltR54dVSRl7W0y4yTPTIjgGUBU3qQu+bgqYbPu9VA==}
     peerDependencies:
       react: '>=16.8.6'
       react-dom: '>=16.8.6'
     dependencies:
-      '@ionic/core': 7.5.7
+      '@ionic/core': 7.6.0
       ionicons: 7.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1824,14 +1824,14 @@ packages:
   /@types/react-dom@18.2.17:
     resolution: {integrity: sha512-rvrT/M7Df5eykWFxn6MYt5Pem/Dbyc1N8Y0S9Mrkw2WFCRiqUgw9P7ul2NpwsXCSM1DVdENzdG9J5SreqfAIWg==}
     dependencies:
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
     dev: true
 
   /@types/react-router-dom@5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
       '@types/react-router': 5.1.20
     dev: true
 
@@ -1839,11 +1839,11 @@ packages:
     resolution: {integrity: sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.2.42
+      '@types/react': 18.2.43
     dev: true
 
-  /@types/react@18.2.42:
-    resolution: {integrity: sha512-c1zEr96MjakLYus/wPnuWDo1/zErfdU9rNsIGmE+NV71nx88FG9Ttgo5dqorXTu/LImX2f63WBP986gJkMPNbA==}
+  /@types/react@18.2.43:
+    resolution: {integrity: sha512-nvOV01ZdBdd/KW6FahSbcNplt2jCJfyWdTos61RYHV+FVv5L/g9AOX1bmbVcWcLFL8+KHQfh1zVIQrud6ihyQA==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -1874,7 +1874,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vitejs/plugin-legacy@5.2.0(terser@5.25.0)(vite@5.0.6):
+  /@vitejs/plugin-legacy@5.2.0(terser@5.26.0)(vite@5.0.7):
     resolution: {integrity: sha512-FGpxQCgyI8SHA/TkFH5vfBManyc6GYkCoYtmom924c7sKObnBE7q543RQuKK46duI4j31Nv1wg4GRNtCfsGpGQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
@@ -1888,13 +1888,13 @@ packages:
       magic-string: 0.30.5
       regenerator-runtime: 0.14.0
       systemjs: 6.14.2
-      terser: 5.25.0
-      vite: 5.0.6(terser@5.25.0)
+      terser: 5.26.0
+      vite: 5.0.7(terser@5.26.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-react@4.2.1(vite@5.0.6):
+  /@vitejs/plugin-react@4.2.1(vite@5.0.7):
     resolution: {integrity: sha512-oojO9IDc4nCUUi8qIR11KoQm0XFFLIwsRBwHRR4d/88IWghn1y6ckz/bJ8GHDCsYEJee8mDzqtJxh15/cisJNQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1905,43 +1905,43 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.23.5)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.0.6(terser@5.25.0)
+      vite: 5.0.7(terser@5.26.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitest/expect@1.0.1:
-    resolution: {integrity: sha512-3cdrb/eKD/0tygDX75YscuHEHMUJ70u3UoLSq2eqhWks57AyzvsDQbyn53IhZ0tBN7gA8Jj2VhXiOV2lef7thw==}
+  /@vitest/expect@1.0.3:
+    resolution: {integrity: sha512-J+JzGw/uvlWI3D3g8s0ewQo7C32nieF5VqEJpmIgAr8CAK36GvIQrV90lChEgQy79iwK3zyQx4UhfMeIF4572g==}
     dependencies:
-      '@vitest/spy': 1.0.1
-      '@vitest/utils': 1.0.1
+      '@vitest/spy': 1.0.3
+      '@vitest/utils': 1.0.3
       chai: 4.3.10
     dev: true
 
-  /@vitest/runner@1.0.1:
-    resolution: {integrity: sha512-/+z0vhJ0MfRPT3AyTvAK6m57rzlew/ct8B2a4LMv7NhpPaiI2QLGyOBMB3lcioWdJHjRuLi9aYppfOv0B5aRQA==}
+  /@vitest/runner@1.0.3:
+    resolution: {integrity: sha512-fCqShW4F8VJ78USVRoc5e1OD5jh1x1quZu4Mgp/lIhZS6PZPtI3wdCfRChWO9ZMJ2Ya7WI3sZTJZD69FR/AosA==}
     dependencies:
-      '@vitest/utils': 1.0.1
+      '@vitest/utils': 1.0.3
       p-limit: 5.0.0
       pathe: 1.1.1
     dev: true
 
-  /@vitest/snapshot@1.0.1:
-    resolution: {integrity: sha512-wIPtPDGSxEZ+DpNMc94AsybX6LV6uN6sosf5TojyP1m2QbKwiRuLV/5RSsjt1oWViHsTj8mlcwrQQ1zHGO0fMw==}
+  /@vitest/snapshot@1.0.3:
+    resolution: {integrity: sha512-2EQwVEuHusEXr0SKuFiI1JVlysSrUceejtusr6vK254tusAz/g4//QrAiD1b7PMdcUKM8QmdgWvqCMaYDsWyNA==}
     dependencies:
       magic-string: 0.30.5
       pathe: 1.1.1
       pretty-format: 29.7.0
     dev: true
 
-  /@vitest/spy@1.0.1:
-    resolution: {integrity: sha512-yXwm1uKhBVr/5MhVeSmtNqK+0q2RXIchJt8kokEKdrWLtkPeDgdbZ6SjR1VQGZuNdWL6sSBnLayIyVvcS0qLfA==}
+  /@vitest/spy@1.0.3:
+    resolution: {integrity: sha512-aMd7kvqJuZ/h27Q5XqNOh9fRX7cQJ9fcaPX8q/lk5h2MkAqvq/HuqZ7n1xjm2SDOlDqg3xMaEqP/4inNlNG62A==}
     dependencies:
       tinyspy: 2.2.0
     dev: true
 
-  /@vitest/utils@1.0.1:
-    resolution: {integrity: sha512-MGPCHkzXbbAyscrhwGzh8uP1HPrTYLWaj1WTDtWSGrpe2yJWLRN9mF9ooKawr6NMOg9vTBtg2JqWLfuLC7Dknw==}
+  /@vitest/utils@1.0.3:
+    resolution: {integrity: sha512-ddGKC6CVjxwjA+ourSlMD6Emc+PhIH6+d25ISGBOQjryXi2NtKpsBSOt1yDT793c2Tqij8g8BBxe87jam3B95w==}
     dependencies:
       diff-sequences: 29.6.3
       loupe: 2.3.7
@@ -4649,8 +4649,8 @@ packages:
     resolution: {integrity: sha512-1TlOwvKWdXxAY9vba+huLu99zrQURDWA8pUTYsRIYDZYQbGyK+pyEP4h4dlySsqo7ozyJBmYD20F+iUHhAltEg==}
     dev: true
 
-  /terser@5.25.0:
-    resolution: {integrity: sha512-we0I9SIsfvNUMP77zC9HG+MylwYYsGFSBG8qm+13oud2Yh+O104y614FRbyjpxys16jZwot72Fpi827YvGzuqg==}
+  /terser@5.26.0:
+    resolution: {integrity: sha512-dytTGoE2oHgbNV9nTzgBEPaqAWvcJNl66VZ0BkJqlvp71IjO8CxdBx/ykCNb47cLnCmCvRZ6ZR0tLkqvZCdVBQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -4796,8 +4796,8 @@ packages:
       is-typed-array: 1.1.12
     dev: true
 
-  /typescript@5.3.2:
-    resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
@@ -4899,8 +4899,8 @@ packages:
       extsprintf: 1.3.0
     dev: true
 
-  /vite-node@1.0.1(terser@5.25.0):
-    resolution: {integrity: sha512-Y2Jnz4cr2azsOMMYuVPrQkp3KMnS/0WV8ezZjCy4hU7O5mUHCAVOnFmoEvs1nvix/4mYm74Len8bYRWZJMNP6g==}
+  /vite-node@1.0.3(terser@5.26.0):
+    resolution: {integrity: sha512-7AH08/UgJQm4gWFyXB6xQ1AvI+iMioM2duPmptytxEbkHamVrOhoha4REt9xvOgyiw91G9OykRlixN4zIsQOQg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
@@ -4908,7 +4908,7 @@ packages:
       debug: 4.3.4(supports-color@8.1.1)
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.0.6(terser@5.25.0)
+      vite: 5.0.7(terser@5.26.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4920,8 +4920,8 @@ packages:
       - terser
     dev: true
 
-  /vite@5.0.6(terser@5.25.0):
-    resolution: {integrity: sha512-MD3joyAEBtV7QZPl2JVVUai6zHms3YOmLR+BpMzLlX2Yzjfcc4gTgNi09d/Rua3F4EtC8zdwPU8eQYyib4vVMQ==}
+  /vite@5.0.7(terser@5.26.0):
+    resolution: {integrity: sha512-B4T4rJCDPihrQo2B+h1MbeGL/k/GMAHzhQ8S0LjQ142s6/+l3hHTT095ORvsshj4QCkoWu3Xtmob5mazvakaOw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4951,13 +4951,13 @@ packages:
       esbuild: 0.19.8
       postcss: 8.4.32
       rollup: 4.6.1
-      terser: 5.25.0
+      terser: 5.26.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.0.1(jsdom@23.0.1)(terser@5.25.0):
-    resolution: {integrity: sha512-MHsOj079S28hDsvdDvyD1pRj4dcS51EC5Vbe0xvOYX+WryP8soiK2dm8oULi+oA/8Xa/h6GoJEMTmcmBy5YM+Q==}
+  /vitest@1.0.3(jsdom@23.0.1)(terser@5.26.0):
+    resolution: {integrity: sha512-zbMmAdRjTki6mYXEjCXMVH8Vb0FX0rAfCSTrbbn3Dqd8Zz6FzImBavkKYsOF+iXd4+k5RoOqi6RyTSoroRS0mw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4981,11 +4981,11 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@vitest/expect': 1.0.1
-      '@vitest/runner': 1.0.1
-      '@vitest/snapshot': 1.0.1
-      '@vitest/spy': 1.0.1
-      '@vitest/utils': 1.0.1
+      '@vitest/expect': 1.0.3
+      '@vitest/runner': 1.0.3
+      '@vitest/snapshot': 1.0.3
+      '@vitest/spy': 1.0.3
+      '@vitest/utils': 1.0.3
       acorn-walk: 8.3.1
       cac: 6.7.14
       chai: 4.3.10
@@ -5000,8 +5000,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.8.1
-      vite: 5.0.6(terser@5.25.0)
-      vite-node: 1.0.1(terser@5.25.0)
+      vite: 5.0.7(terser@5.26.0)
+      vite-node: 1.0.3(terser@5.26.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
