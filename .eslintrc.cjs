@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/indent': 'error',
     'no-unused-expressions': 'error',
     'chai-friendly/no-unused-expressions': 'error',
+    '@typescript-eslint/member-delimiter-style': 'off'
   },
   ignorePatterns: ['src/graphql/**/*', 'node_modules'],
 };

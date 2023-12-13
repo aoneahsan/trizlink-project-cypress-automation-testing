@@ -129,7 +129,7 @@ describe('T1 - Login Page Test - Should be able to login using correct credentia
     cy.get(SELECTORS.PAGES.LOGIN.Login_Button).should('not.be.enabled');
   });
   // forget password button weather it lands on the correct page or not and reload and get back to previous page as well
-  it.only('After landing on the Login page, you should be able to connect the forget password button to see whether it goes to the correct page.', () => {
+  it.only('After landing on the Login page, you should be able to connect the forget password button to see whether it goes to the  correct page.', () => {
     cy.get(SELECTORS.PAGES.LOGIN.Forget_Password_Btn).click();
     cy.url().should('include', SELECTORS.PAGES.URLS.Forget_Password_Page);
     // this is the selector of the forgot password text at the top of the forgot-password page. as there was no selector so i use its class to make an assertion.

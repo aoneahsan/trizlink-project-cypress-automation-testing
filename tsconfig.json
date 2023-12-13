@@ -14,8 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "types": ["cypress"],
+    "types": ["cypress", "node"],
     "rootDir": "./",
     "baseUrl": "./",
     "paths": {
@@ -23,7 +22,9 @@
       "@trzData/*": ["./cypress/data/*"],
       "@trzFixture/*": ["./cypress/fixtures/*"],
       "@trzUtils/*": ["./cypress/utils/*"],
-      "@trzSelectors/*": ["./cypress/utils/selectors/*"]
+      "@trzSelectors/*": ["./cypress/utils/selectors/*"],
+      "@trzEnv": ["./cypress/utils/envKeys"],
+      "@trzConstants": ["./cypress/utils/constants"]
     }
   },
   "include": ["src", "cypress/**/*.ts", "cypress/**/*.cy.ts"],
