@@ -14,3 +14,10 @@ export const USER_DETAILS = {
     Password_wo_sp_character: '121assa121'
   }
 };
+
+export const WORKSPACE = {
+  Sections: {
+    Workspace_Name: 'Zaions Work',
+    Timezone_Country: 'Islamabad'
+  }
+}

@@ -1,7 +1,7 @@
 export const SELECTORS = {
   PAGES: {
     LOGIN: {
-      //login button on the home page at the top right corner to go to the login page
+      // login button on the home page at the top right corner to go to the login page
       Login_Button_HP: '[cy-es="ztes__hp-nav-login-btn"]',
       // email text to enter the email in the login page
       Email_Input_Text: '[cy-es="ztes__lp-email-input"]',
@@ -16,10 +16,17 @@ export const SELECTORS = {
       New_Workspace_TL_Button: '[cy-es="ztes__wlp-create-btn"]',
       Create_Workspace_Card: '[cy-es="ztes__wlp-create-card-btn"]',
       Create_Btn_New_Workspace: '[cy-es="ztes__wcm-create-btn"]',
-	  Workspace_Name_input: '[cy-es="ztes__wcm-name-input"]',
+	    Workspace_Name_input: '[cy-es="ztes__wcm-name-input"]',
+      Workspace_Timezone: '[cy-es="ztes__wcm-timezone-input"]',
+      Dropdown_Timezone: '.action-sheet-button',
+      // favorite icon on new workspace card (NWC) to add it to the favorite workspaces section.
+      Favorite_Icon_NWC: '[cy-es="ztes__wlp-card-favorites-btn-657ab851bba0b"]',
+      Ellipses_Dots_NWC: '[cy-es="ztes__wlp-card-action-btn-657ab851bba0b"]',
+      Workspace_Dlt_Btn: '[cy-es="ztes__wap-delete-btn"]',
+      Owned_Workspace_Section: '[cy-els="ztes__wlp-owned-ws-card"]'
     },
     GENERAL: {
-      //OR Text( this is mainly to unfocused the text input field to get error messages)
+      // OR Text( this is mainly to unfocused the text input field to get error messages)
       Or_Text: '.zaions__separator',
     },
     URLS: {
