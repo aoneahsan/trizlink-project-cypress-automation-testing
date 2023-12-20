@@ -1,8 +1,8 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
   e2e: {
-    baseUrl: "https://prettylinks.zaions.com",
+    baseUrl: 'https://prettylinks.zaions.com',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
@@ -13,13 +13,13 @@ export default defineConfig({
     requestTimeout: 1 * 60 * 1000,
     responseTimeout: 2 * 60 * 1000,
     numTestsKeptInMemory: 100, // reduce this for systems with less ram/memory
-    watchForFileChanges: false
+    watchForFileChanges: false,
   },
 
   component: {
     devServer: {
-      framework: "react",
-      bundler: "vite",
+      framework: 'react',
+      bundler: 'vite',
     },
   },
 });
