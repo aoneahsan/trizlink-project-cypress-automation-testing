@@ -24,7 +24,8 @@
       "@trzUtils/*": ["./cypress/utils/*"],
       "@trzSelectors/*": ["./cypress/utils/selectors/*"],
       "@trzEnv": ["./cypress/utils/envKeys"],
-      "@trzConstants": ["./cypress/utils/constants"]
+      "@trzConstants": ["./cypress/utils/constants"],
+      "@trzWorkspaceData": ["./cypress/data/*"]
     }
   },
   "include": ["src", "cypress/**/*.ts", "cypress/**/*.cy.ts"],

@@ -2,7 +2,7 @@
 export const USER_DETAILS = {
   CORRECT: {
     Login_Email: 'ahsan@zaions.com',
-    Login_Password: 'asd123!@#',
+    Login_Password: 'asd123!@#'
   },
   Wrong: {
     Login_Email: 'aqeel@gmail.com',
@@ -11,13 +11,6 @@ export const USER_DETAILS = {
     Password_5digit: 'asd12',
     Password_wo_numbers: 'aq!@aqas',
     Password_wo_alphabets: '121212@!',
-    Password_wo_sp_character: '121assa121',
-  },
-} as const;
-
-export const WORKSPACE = {
-  Sections: {
-    Workspace_Name: 'Zaions Work',
-    Timezone_Country: 'Islamabad',
-  },
+    Password_wo_sp_character: '121assa121'
+  }
 } as const;
