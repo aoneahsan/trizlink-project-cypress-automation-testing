@@ -93,21 +93,72 @@ describe('Workspace page tests after entering user login credentials', () => {
   });
 
   it.only('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
-    // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC).last().click();
-    // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Workspace_Section).should(
-    //   'have.length',
-    //   4
-    // );
-    // // need to discuss with ahsan brother.
-    // cy.get('[cy-es="ztes__wlp-favorite-ws-card-657d692143cc1"]').should(
-    //   'have.id',
-    //   '657c8631819d8'
-    // );
-
     // TODO: aqeel add selectors in js file
-    cy.get('cy-els=ztes__wlp-owned-ws-card').then((result) => {
-      console.log({ result });
-    });
+    cy.get('[cy-els="ztes__wlp-favorite-ws-card"]').then(
+      (oldFavoriteWorkspaces) => {
+        const oldFavoriteWorkspacesLength = oldFavoriteWorkspaces.length;
+        cy.get('[cy-els="ztes__wlp-owned-ws-card"]').then((result) => {
+          if (result.length > 0) {
+            const firstWorkspaceElement = result[0];
+
+            // TODO: create a "attributeKeys" constant and move this there
+            const workspaceCyEsAttributeVal =
+              firstWorkspaceElement.getAttribute('cy-es');
+            // ztes__wlp-owned-ws-card-657c8631819d8
+            // ztes__wlp-card-favorites-btn-657c8631819d8
+            const workspaceId = workspaceCyEsAttributeVal?.replace(
+              'ztes__wlp-owned-ws-card-',
+              ''
+            );
+
+            cy.get(
+              `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
+            ).click();
+
+            console.log({ workspaceCyEsAttributeVal, firstWorkspaceElement });
+
+            cy.get('[cy-els="ztes__wlp-favorite-ws-card"]').then(
+              (updatedFavoriteWorkspaces) => {
+                const updatedFavoriteWorkspacesLength =
+                  updatedFavoriteWorkspaces.length;
+
+                expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
+                  oldFavoriteWorkspacesLength
+                );
+
+                cy.get(
+                  `[cy-es="ztes__wlp-favorite-ws-card-${workspaceId}"]`
+                ).should('exist');
+
+                cy.get(
+                  `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
+                ).click();
+
+                cy.get('[cy-els="ztes__wlp-favorite-ws-card"]').then(
+                  (finalFavoriteWorkspaces) => {
+                    const finalFavoriteWorkspacesLength =
+                      finalFavoriteWorkspaces.length;
+
+                    expect(finalFavoriteWorkspacesLength).to.eq(
+                      oldFavoriteWorkspacesLength
+                    );
+                    expect(finalFavoriteWorkspacesLength).to.lessThan(
+                      updatedFavoriteWorkspacesLength
+                    );
+                    expect(finalFavoriteWorkspacesLength + 1).to.eq(
+                      updatedFavoriteWorkspacesLength
+                    );
+                    expect(updatedFavoriteWorkspacesLength - 1).to.eq(
+                      finalFavoriteWorkspacesLength
+                    );
+                  }
+                );
+              }
+            );
+          }
+        });
+      }
+    );
   });
 
   it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
