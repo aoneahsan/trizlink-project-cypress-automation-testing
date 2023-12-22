@@ -16,7 +16,7 @@ export const SELECTORS = {
       New_Workspace_TL_Button: '[cy-es="ztes__wlp-create-btn"]',
       Create_Workspace_Card: '[cy-es="ztes__wlp-create-card-btn"]',
       Create_Btn_New_Workspace: '[cy-es="ztes__wcm-create-btn"]',
-      Workspace_Name_input: '[cy-es="ztes__wcm-name-input"]',
+	    Workspace_Name_input: '[cy-es="ztes__wcm-name-input"]',
       Workspace_Timezone: '[cy-es="ztes__wcm-timezone-input"]',
       Dropdown_Timezone: '.action-sheet-button',
       // favorite icon on new workspace card (NWC) to add it to the favorite workspaces section.
@@ -27,7 +27,7 @@ export const SELECTORS = {
       Ellipses_General_Selector: '[cy-els="ztes__wlp-card-action-btn"]',
       Workspace_Dlt_Btn: '[cy-es="ztes__wap-delete-btn"]',
       FWS_Element_Selector: '[cy-els="ztes__wlp-favorite-ws-card"]',
-      Delete_Btn_Alert: '.alert-button-role-danger',
+      Delete_Btn_Alert: '.alert-button-role-danger'
     },
     GENERAL: {
       // OR Text( this is mainly to unfocused the text input field to get error messages)
@@ -36,6 +36,7 @@ export const SELECTORS = {
     URLS: {
       Login_Page: 'https://prettylinks.zaions.com/sign-in',
       Forget_Password_Page: 'https://prettylinks.zaions.com/forgot-password',
-    },
-  },
+    
+    }
+  }
 } as const;

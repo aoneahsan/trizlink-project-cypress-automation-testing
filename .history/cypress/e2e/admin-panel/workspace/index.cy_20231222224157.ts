@@ -175,12 +175,12 @@ describe('Workspace page tests after entering user login credentials', () => {
       WORKSPACE_DETAILS.Sections.Timezone_Country
     ).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.o)
       .should('have.length')
       .then((initialLength) => {
         console.log({ initialLength });
         // cy.log(`Initial Workspace Length: ${initialLength}`);
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section)
           .eq(2)
           .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
           .click();
@@ -220,11 +220,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
       WORKSPACE_DETAILS.Sections.Workspace_Name
     );
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
-    cy.contains(
-      SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
-      WORKSPACE_DETAILS.Sections.Timezone_Country
-    ).click();
-    // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone).click();
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.).click();
   });
 });

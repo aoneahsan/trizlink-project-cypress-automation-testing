@@ -225,6 +225,6 @@ describe('Workspace page tests after entering user login credentials', () => {
       SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
       WORKSPACE_DETAILS.Sections.Timezone_Country
     ).click();
-    // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
   });
 });

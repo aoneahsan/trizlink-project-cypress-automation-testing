@@ -11,7 +11,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     cy.visit(APP_ROUTES.WORKSPACE.LIST);
   });
 
-  it('should be able to click on the workspace box and check weather the new workspace page is visible or not.', () => {
+  it.only('should be able to click on the workspace box and check weather the new workspace page is visible or not.', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).should(
       'be.visible'
     );
@@ -163,7 +163,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
 
-  it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
+  it.only('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
       WORKSPACE_DETAILS.Sections.Workspace_Name
@@ -175,12 +175,12 @@ describe('Workspace page tests after entering user login credentials', () => {
       WORKSPACE_DETAILS.Sections.Timezone_Country
     ).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section)
       .should('have.length')
       .then((initialLength) => {
         console.log({ initialLength });
         // cy.log(`Initial Workspace Length: ${initialLength}`);
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section)
           .eq(2)
           .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
           .click();
@@ -215,16 +215,9 @@ describe('Workspace page tests after entering user login credentials', () => {
       }
     );
   });
-  it.only('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
-      WORKSPACE_DETAILS.Sections.Workspace_Name
-    );
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
-    cy.contains(
-      SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
-      WORKSPACE_DETAILS.Sections.Timezone_Country
-    ).click();
-    // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
+  it('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
+  cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
+  cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input)l.type(WORKSPACE_DETAILS.Sections.Workspace_Name);
+  cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone).c
   });
 });
