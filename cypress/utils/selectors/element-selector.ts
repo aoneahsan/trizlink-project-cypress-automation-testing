@@ -22,12 +22,11 @@ export const SELECTORS = {
       // favorite icon on new workspace card (NWC) to add it to the favorite workspaces section.
       Favorite_Icon_NWC: '[cy-els="ztes__wlp-card-favorites-btn"]',
       // OWS_Selector stands for owned workspace selector(common testing selector)
-      OWS_General_Selector: '[cy-els="ztes__wlp-owned-ws-card"]',
+      OWS_Element_Selector: '[cy-els="ztes__wlp-owned-ws-card"]',
 
       Ellipses_General_Selector: '[cy-els="ztes__wlp-card-action-btn"]',
       Workspace_Dlt_Btn: '[cy-es="ztes__wap-delete-btn"]',
-      Owned_Workspace_Section: '[cy-els="ztes__wlp-owned-ws-card"]',
-      Favorite_Workspace_Section: '[cy-els="ztes__wlp-favorite-ws-card"]',
+      FWS_Element_Selector: '[cy-els="ztes__wlp-favorite-ws-card"]',
       Delete_Btn_Alert: '.alert-button-role-danger'
     },
     GENERAL: {

@@ -94,10 +94,10 @@ describe('Workspace page tests after entering user login credentials', () => {
 
   it.only('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
     // TODO: aqeel add selectors in js file
-    cy.get('[cy-els="ztes__wlp-favorite-ws-card"]').then(
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_Element_Selector).then(
       (oldFavoriteWorkspaces) => {
         const oldFavoriteWorkspacesLength = oldFavoriteWorkspaces.length;
-        cy.get('[cy-els="ztes__wlp-owned-ws-card"]').then((result) => {
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then((result) => {
           if (result.length > 0) {
             const firstWorkspaceElement = result[0];
 
@@ -117,7 +117,7 @@ describe('Workspace page tests after entering user login credentials', () => {
 
             console.log({ workspaceCyEsAttributeVal, firstWorkspaceElement });
 
-            cy.get('[cy-els="ztes__wlp-favorite-ws-card"]').then(
+            cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_Element_Selector).then(
               (updatedFavoriteWorkspaces) => {
                 const updatedFavoriteWorkspacesLength =
                   updatedFavoriteWorkspaces.length;
@@ -134,7 +134,7 @@ describe('Workspace page tests after entering user login credentials', () => {
                   `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
                 ).click();
 
-                cy.get('[cy-els="ztes__wlp-favorite-ws-card"]').then(
+                cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_Element_Selector).then(
                   (finalFavoriteWorkspaces) => {
                     const finalFavoriteWorkspacesLength =
                       finalFavoriteWorkspaces.length;
@@ -161,7 +161,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
 
-  it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
+  it.only('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
       WORKSPACE_DETAILS.Sections.Workspace_Name
@@ -207,7 +207,7 @@ describe('Workspace page tests after entering user login credentials', () => {
             expect(resBody?.data?.items).to.have.length.gt(0);
           });
         } else {
-          console.log('INCORRECT ENTERIES ENTERED');
+          console.log('INCORRECT ENTRIES ENTERED');
         }
         console.log(_request);
       }
