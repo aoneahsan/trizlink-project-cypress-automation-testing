@@ -94,48 +94,50 @@ describe('Workspace page tests after entering user login credentials', () => {
 
   it.only('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
     // TODO: aqeel add selectors in js file
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_Element_Selector).then(
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
       (oldFavoriteWorkspaces) => {
         const oldFavoriteWorkspacesLength = oldFavoriteWorkspaces.length;
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then((result) => {
-          if (result.length > 0) {
-            const firstWorkspaceElement = result[0];
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then(
+          (result) => {
+            if (result.length > 0) {
+              const firstWorkspaceElement = result[0];
 
-            // TODO: create a "attributeKeys" constant and move this there
-            const workspaceCyEsAttributeVal =
-              firstWorkspaceElement.getAttribute('cy-es');
-            // ztes__wlp-owned-ws-card-657c8631819d8
-            // ztes__wlp-card-favorites-btn-657c8631819d8
-            const workspaceId = workspaceCyEsAttributeVal?.replace(
-              'ztes__wlp-owned-ws-card-',
-              ''
-            );
+              // TODO: create a "attributeKeys" constant and move this there
+              const workspaceCyEsAttributeVal =
+                firstWorkspaceElement.getAttribute('cy-es');
+              // ztes__wlp-owned-ws-card-657c8631819d8
+              // ztes__wlp-card-favorites-btn-657c8631819d8
+              const workspaceId = workspaceCyEsAttributeVal?.replace(
+                'ztes__wlp-owned-ws-card-',
+                ''
+              );
 
-            cy.get(
-              `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
-            ).click();
+              cy.get(
+                `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
+              ).click();
 
-            console.log({ workspaceCyEsAttributeVal, firstWorkspaceElement });
+              console.log({ workspaceCyEsAttributeVal, firstWorkspaceElement });
 
-            cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_Element_Selector).then(
-              (updatedFavoriteWorkspaces) => {
-                const updatedFavoriteWorkspacesLength =
-                  updatedFavoriteWorkspaces.length;
+              cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
+                (updatedFavoriteWorkspaces) => {
+                  const updatedFavoriteWorkspacesLength =
+                    updatedFavoriteWorkspaces.length;
 
-                expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
-                  oldFavoriteWorkspacesLength
-                );
+                  expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
+                    oldFavoriteWorkspacesLength
+                  );
 
-                cy.get(
-                  `[cy-es="ztes__wlp-favorite-ws-card-${workspaceId}"]`
-                ).should('exist');
+                  cy.get(
+                    `[cy-es="ztes__wlp-favorite-ws-card-${workspaceId}"]`
+                  ).should('exist');
 
-                cy.get(
-                  `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
-                ).click();
+                  cy.get(
+                    `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
+                  ).click();
 
-                cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_Element_Selector).then(
-                  (finalFavoriteWorkspaces) => {
+                  cy.get(
+                    SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR
+                  ).then((finalFavoriteWorkspaces) => {
                     const finalFavoriteWorkspacesLength =
                       finalFavoriteWorkspaces.length;
 
@@ -151,12 +153,12 @@ describe('Workspace page tests after entering user login credentials', () => {
                     expect(updatedFavoriteWorkspacesLength - 1).to.eq(
                       finalFavoriteWorkspacesLength
                     );
-                  }
-                );
-              }
-            );
+                  });
+                }
+              );
+            }
           }
-        });
+        );
       }
     );
   });
