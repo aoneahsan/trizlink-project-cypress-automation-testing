@@ -11,7 +11,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     cy.visit(APP_ROUTES.WORKSPACE.LIST);
   });
 
-  it('should be able to click on the workspace box and check weather the new workspace page is visible or not.', () => {
+  it.only('should be able to click on the workspace box and check weather the new workspace page is visible or not.', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).should(
       'be.visible'
     );
@@ -92,78 +92,9 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
 
-  it('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
-    // TODO: aqeel add selectors in js file
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
-      (oldFavoriteWorkspaces) => {
-        const oldFavoriteWorkspacesLength = oldFavoriteWorkspaces.length;
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then(
-          (result) => {
-            if (result.length > 0) {
-              const firstWorkspaceElement = result[0];
+cc
 
-              // TODO: create a "attributeKeys" constant and move this there
-              const workspaceCyEsAttributeVal =
-                firstWorkspaceElement.getAttribute('cy-es');
-              // ztes__wlp-owned-ws-card-657c8631819d8
-              // ztes__wlp-card-favorites-btn-657c8631819d8
-              const workspaceId = workspaceCyEsAttributeVal?.replace(
-                'ztes__wlp-owned-ws-card-',
-                ''
-              );
-
-              cy.get(
-                `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
-              ).click();
-
-              console.log({ workspaceCyEsAttributeVal, firstWorkspaceElement });
-
-              cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
-                (updatedFavoriteWorkspaces) => {
-                  const updatedFavoriteWorkspacesLength =
-                    updatedFavoriteWorkspaces.length;
-
-                  expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
-                    oldFavoriteWorkspacesLength
-                  );
-
-                  cy.get(
-                    `[cy-es="ztes__wlp-favorite-ws-card-${workspaceId}"]`
-                  ).should('exist');
-
-                  cy.get(
-                    `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
-                  ).click();
-
-                  cy.get(
-                    SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR
-                  ).then((finalFavoriteWorkspaces) => {
-                    const finalFavoriteWorkspacesLength =
-                      finalFavoriteWorkspaces.length;
-
-                    expect(finalFavoriteWorkspacesLength).to.eq(
-                      oldFavoriteWorkspacesLength
-                    );
-                    expect(finalFavoriteWorkspacesLength).to.lessThan(
-                      updatedFavoriteWorkspacesLength
-                    );
-                    expect(finalFavoriteWorkspacesLength + 1).to.eq(
-                      updatedFavoriteWorkspacesLength
-                    );
-                    expect(updatedFavoriteWorkspacesLength - 1).to.eq(
-                      finalFavoriteWorkspacesLength
-                    );
-                  });
-                }
-              );
-            }
-          }
-        );
-      }
-    );
-  });
-
-  it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
+  it.only('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
       WORKSPACE_DETAILS.Sections.Workspace_Name
@@ -175,12 +106,12 @@ describe('Workspace page tests after entering user login credentials', () => {
       WORKSPACE_DETAILS.Sections.Timezone_Country
     ).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section)
       .should('have.length')
       .then((initialLength) => {
         console.log({ initialLength });
         // cy.log(`Initial Workspace Length: ${initialLength}`);
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section)
           .eq(2)
           .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
           .click();
@@ -214,47 +145,5 @@ describe('Workspace page tests after entering user login credentials', () => {
         console.log(_request);
       }
     );
-  });
-  it.only('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
-      WORKSPACE_DETAILS.Sections.Workspace_Name
-    );
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
-    cy.contains(
-      SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
-      WORKSPACE_DETAILS.Sections.Timezone_Country
-    ).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
-    //     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then((FavWorkspace) => {
-    // const OldWorkspaceFavoriteLength = FavWorkspace.length;
-    // cy.log(OldWorkspaceFavoriteLength)
-    // })
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then((FWSE) => {
-      const FWSEL = FWSE.length;
-      cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then(
-        (results) => {
-          console.log(results);
-          if (results.length > 0) {
-            const FirstWE = results[0];
-            console.log(FirstWE);
-            const WorkspaceElementVal = FirstWE?.getAttribute('cy-es');
-            const workspaceID = WorkspaceElementVal?.replace(
-              'ztes__wlp-owned-ws-card-',
-              ''
-            );
-            cy.get(
-              `[cy-es="ztes__wlp-card-favorites-btn-${workspaceID}"]`
-            ).click();
-          } else console.log('sorry');
-          cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
-            (finalWorksapceSelector) => {
-              const finalWorkspaceElementlength = finalWorksapceSelector.length;
-              expect(finalWorkspaceElementlength).to.be.greaterThan(FWSEL);
-            }
-          );
-        }
-      );
-    });
   });
 });

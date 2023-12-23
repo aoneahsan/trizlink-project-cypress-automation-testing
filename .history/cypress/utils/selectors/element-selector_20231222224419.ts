@@ -10,7 +10,7 @@ export const SELECTORS = {
       // login button where user click on it to login in the account
       Login_Button: '[cy-es="ztes__lp-login-btn"]',
       Password_eye_icon: '[cy-es="ztes__lp-see-password-btn"]',
-      Forget_Password_Btn: '[cy-es="ztes__lp-forget-pw-btn"]'
+      Forget_Password_Btn: '[cy-es="ztes__lp-forget-pw-btn"]',
     },
     WORKSPACE_PAGE: {
       New_Workspace_TL_Button: '[cy-es="ztes__wlp-create-btn"]',
@@ -23,18 +23,19 @@ export const SELECTORS = {
       Favorite_Icon_NWC: '[cy-els="ztes__wlp-card-favorites-btn"]',
       // OWS_Selector stands for owned workspace selector(common testing selector)
       OWS_Element_Selector: '[cy-els="ztes__wlp-owned-ws-card"]',
+
       Ellipses_General_Selector: '[cy-els="ztes__wlp-card-action-btn"]',
       Workspace_Dlt_Btn: '[cy-es="ztes__wap-delete-btn"]',
-      FWS_ElEMENT_SELECTOR: '[cy-els="ztes__wlp-favorite-ws-card"]',
-      Delete_Btn_Alert: '.alert-button-role-danger'
+      FWS_Element_Selector: '[cy-els="ztes__wlp-favorite-ws-card"]',
+      Delete_Btn_Alert: '.alert-button-role-danger',
     },
     GENERAL: {
       // OR Text( this is mainly to unfocused the text input field to get error messages)
-      Or_Text: '.zaions__separator'
+      Or_Text: '.zaions__separator',
     },
     URLS: {
       Login_Page: 'https://prettylinks.zaions.com/sign-in',
-      Forget_Password_Page: 'https://prettylinks.zaions.com/forgot-password'
-    }
-  }
+      Forget_Password_Page: 'https://prettylinks.zaions.com/forgot-password',
+    },
+  },
 } as const;

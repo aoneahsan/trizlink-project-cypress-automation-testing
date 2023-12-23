@@ -10,8 +10,8 @@ export const ENVS = {
         Cypress.env('loginDetails')?.ahsanZaionsAccount?.userDetails !==
         undefined
           ? String(Cypress.env('loginDetails')?.ahsanZaionsAccount?.userDetails)
-          : ''
+          : '',
     }
   },
-  simple: String(Cypress.env('simple') ?? 'simple key value not set in env')
+  simple: String(Cypress.env('simple') ?? 'simple key value not set in env'),
 } as const;

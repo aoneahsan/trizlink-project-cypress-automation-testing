@@ -2,7 +2,7 @@ import { LOCAL_STORAGE_KEYS } from '@trzUtils/constants';
 import { ENVS } from '@trzUtils/envKeys';
 
 export const authenticateUserBeforeEachHook = (): void | never => {
-  // as we need to have the login details in ENV file to continue hence, it will either return true or a error.
+  // as we need to have the loging details in ENV file to continue hence, it will either return true or a error.
   if (
     (LOCAL_STORAGE_KEYS?.userAuthToken).length > 0 &&
     (ENVS?.loginDetails?.ahsanZaions?.token).length > 0
