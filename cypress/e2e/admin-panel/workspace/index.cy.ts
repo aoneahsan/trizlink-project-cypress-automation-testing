@@ -3,7 +3,6 @@ import { APP_ROUTES } from '@trzUtils/app-routes';
 import { API_METHODS } from '@trzUtils/enums';
 import { authenticateUserBeforeEachHook } from '@trzUtils/helpers/authenticate-user-beforeEach-hook';
 import { SELECTORS } from '@trzUtils/selectors';
-import { SELECTOR } from '@trzUtils/selectors/login-page';
 
 describe('Workspace page tests after entering user login credentials', () => {
   beforeEach('visit workspace after entering login details', () => {
@@ -47,7 +46,6 @@ describe('Workspace page tests after entering user login credentials', () => {
 
         // api request should be of type post, in order to check the result of newly created workspace data
         if (_request.method === API_METHODS.POST) {
-          console.log({ _request });
           _request.continue((_response) => {
             const _responseBody = _response.body as {
               success: boolean;
@@ -108,18 +106,18 @@ describe('Workspace page tests after entering user login credentials', () => {
                 firstWorkspaceElement.getAttribute(
                   SELECTORS.PAGES.ATTRIBUTE_KEYS.CYPRESS_SELECTOR
                 );
-              // ztes__wlp-owned-ws-card-657c8631819d8
-              // ztes__wlp-card-favorites-btn-657c8631819d8
-              const workspaceId = workspaceCyEsAttributeVal?.replace(
-                SELECTORS.PAGES.ATTRIBUTE_KEYS.OWS_COMMON_SELECTOR_EXCEPT_ID,
-                ''
-              );
-              // !ERROR Unable to make a good selector type and also getting 2 elements when clicking in a specific element ID
-              cy.get(
-                `[${SELECTORS.PAGES.ATTRIBUTE_KEYS.OWS_COMMON_SELECTOR_EXCEPT_ID}${workspaceId}"]`
-              ).click();
+              const workspaceId =
+                workspaceCyEsAttributeVal?.replace(
+                  SELECTORS.PAGES.ATTRIBUTE_KEYS.OWS_COMMON_SELECTOR_EXCEPT_ID,
+                  ''
+                ) ?? '';
+              expect(workspaceId).to.exist.and.not.eq('');
 
-              console.log({ workspaceCyEsAttributeVal, firstWorkspaceElement });
+              // !ERROR: Unable to make a good selector type and also getting 2 elements when clicking in a specific element ID
+              // ztes__wlp-owned-ws-card-6586c192a56e3
+              cy.get(
+                `[cy-es="${SELECTORS.PAGES.ATTRIBUTE_KEYS.OWS_COMMON_SELECTOR_EXCEPT_ID}${workspaceId}"]`
+              ).click();
 
               cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
                 (updatedFavoriteWorkspaces) => {
@@ -129,11 +127,10 @@ describe('Workspace page tests after entering user login credentials', () => {
                   expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
                     oldFavoriteWorkspacesLength
                   );
-                  // !ERROR Unable to make a good selector type
                   cy.get(
-                    `[cy-es="ztes__wlp-favorite-ws-card-${workspaceId}"]`
+                    SELECTORS.PAGES.WORKSPACE_PAGE.FAVORITE_WS_CARD(workspaceId)
                   ).should('exist');
-                  // !ERROR Unable to make a good selector type
+                  // !ERROR Unable to make a good selector type - Ahsan Explained, aqeel bahi need to update
                   cy.get(
                     `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
                   ).click();
@@ -166,13 +163,12 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
 
-  it.only('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
+  it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
       WORKSPACE_DETAILS.Sections.Workspace_Name
     );
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
-    // cy.contains('(UTC+05:00) Islamabad, Karachi');
     cy.contains(
       SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
       WORKSPACE_DETAILS.Sections.Timezone_Country
@@ -181,14 +177,17 @@ describe('Workspace page tests after entering user login credentials', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
       .should('have.length.above', 0)
       .then((result) => {
-        const SecondElement = result[2];
-        SecondElement.children
-        console.log(SecondElement.children)
-        // cy.log(`Initial Workspace Length: ${initialLength}`);
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
-          .eq(2)
+        // you said second, but you are selecting 3rd element (index start from 0)
+        const SecondElement = result[1];
+
+        // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+        //   .eq(1)
+        //   .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
+        //   .click();
+        cy.wrap(SecondElement)
           .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
           .click();
+
         cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Dlt_Btn).click();
         cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Delete_Btn_Alert).click();
         // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section).should('have.length', initialLength - 1);
@@ -214,13 +213,12 @@ describe('Workspace page tests after entering user login credentials', () => {
             expect(resBody?.data?.items).to.have.length.gt(0);
           });
         } else {
-          console.log('INCORRECT ENTRIES ENTERED');
+          cy.log('INCORRECT ENTRIES ENTERED');
         }
-        console.log(_request);
       }
     );
   });
-  it.only('should be able to click on a specific card and delete the card and click on setting and check we can update workspace by making a change in the name or timezone', () => {
+  it('should be able to click on a specific card and delete the card and click on setting and check we can update workspace by making a change in the name or timezone', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).should(
       'have.length.above',
       0
@@ -246,9 +244,8 @@ describe('Workspace page tests after entering user login credentials', () => {
             expect(resBody?.data?.items).to.have.length.gt(0);
           });
         } else {
-          console.log('INCORRECT ENTRIES ENTERED');
+          cy.log('INCORRECT ENTRIES ENTERED');
         }
-        console.log(_request);
       }
     );
   });
