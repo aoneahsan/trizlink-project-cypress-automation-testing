@@ -1,5 +1,5 @@
 export const APP_ROUTES = {
   WORKSPACE: {
-    LIST: '/app/workspaces',
-  },
+    LIST: '/app/workspaces'
+  }
 } as const;
