@@ -181,9 +181,6 @@ describe('Workspace page tests after entering user login credentials', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
       .should('have.length.above', 0)
       .then((result) => {
-        const SecondElement = result[2];
-        SecondElement.children
-        console.log(SecondElement.children)
         // cy.log(`Initial Workspace Length: ${initialLength}`);
         cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
           .eq(2)
