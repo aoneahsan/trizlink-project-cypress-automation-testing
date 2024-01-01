@@ -14,22 +14,23 @@ export const SELECTORS = {
       Ellipses_General_Selector: '[cy-els="ztes__wlp-card-action-btn"]',
       Workspace_Dlt_Btn: '[cy-es="ztes__wap-delete-btn"]',
       FWS_ElEMENT_SELECTOR: '[cy-els="ztes__wlp-favorite-ws-card"]',
-      Delete_Btn_Alert: '.alert-button-role-danger'
-
+      Delete_Btn_Alert: '.alert-button-role-danger',
+      FAVORITE_WS_CARD: (workspaceId: string) =>
+        `[cy-es="ztes__wlp-favorite-ws-card-${workspaceId}"]`,
     },
     ATTRIBUTE_KEYS: {
       CYPRESS_SELECTOR: 'cy-es',
       OWS_COMMON_SELECTOR_EXCEPT_ID: 'ztes__wlp-owned-ws-card-',
       FWS_COMMON_SELECTOR_EXCEPT_ID_CY: 'ztes__wlp-card-favorites-btn-',
-      FWS_COMMON_SELECTOR_EXCEPT_ID: 'cy-es="ztes__wlp-favorite-ws-card'
+      FWS_COMMON_SELECTOR_EXCEPT_ID: 'cy-es="ztes__wlp-favorite-ws-card',
     },
     GENERAL: {
       // OR Text( this is mainly to unfocused the text input field to get error messages)
-      Or_Text: '.zaions__separator'
+      Or_Text: '.zaions__separator',
     },
     URLS: {
       Login_Page: 'https://prettylinks.zaions.com/sign-in',
-      Forget_Password_Page: 'https://prettylinks.zaions.com/forgot-password'
-    }
-  }
+      Forget_Password_Page: 'https://prettylinks.zaions.com/forgot-password',
+    },
+  },
 } as const;
