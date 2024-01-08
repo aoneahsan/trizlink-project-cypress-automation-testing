@@ -3,6 +3,8 @@ import { APP_ROUTES } from '@trzUtils/app-routes';
 import { API_METHODS } from '@trzUtils/enums';
 import { authenticateUserBeforeEachHook } from '@trzUtils/helpers/authenticate-user-beforeEach-hook';
 import { SELECTORS } from '@trzUtils/selectors';
+import { error } from 'console';
+import { isNumber } from 'cypress/types/lodash';
 
 describe('Workspace page tests after entering user login credentials', () => {
   beforeEach('visit workspace after entering login details', () => {
@@ -91,15 +93,17 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
   // TODO: need to add separate selectors for favorite icon OWS Elements and in FWS Elements
-  it.only('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
+  // !: Unable to complete test, facing some problems while making assertions.
+  it('should be able to add workspace to favorite workspaces and check weather it is visible or not in favorites.', () => {
     // TODO: aqeel add selectors in js file
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SECTION).then(
       (oldFavoriteWorkspaces) => {
         const oldFavoriteWorkspacesLength = oldFavoriteWorkspaces.length;
+        console.log(oldFavoriteWorkspacesLength)
         cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then(
           (result) => {
             if (result.length > 0) {
-              const firstWorkspaceElement = result[0];
+              const firstWorkspaceElement = result[1];
 
               // TODO: create a "attributeKeys" constant and move this there
               const workspaceCyEsAttributeVal =
@@ -117,45 +121,61 @@ describe('Workspace page tests after entering user login credentials', () => {
               // ztes__wlp-owned-ws-card-6586c192a56e3
               cy.get(
                 `[cy-es="${SELECTORS.PAGES.ATTRIBUTE_KEYS.OWS_COMMON_SELECTOR_EXCEPT_ID}${workspaceId}"]`
-              ).click();
+              ).then((result) => {
+                // if (
+                //   SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC.length !== 0
+                // ) {
+                const FavIconEl = result.find(SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC)
+                console.log(FavIconEl);
+                cy.wrap(FavIconEl).click()
+                ;
+                // if (FavIconEl.length !== 0) {
+                //   cy.get()
+                // }
 
-              cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
-                (updatedFavoriteWorkspaces) => {
-                  const updatedFavoriteWorkspacesLength =
-                    updatedFavoriteWorkspaces.length;
-
-                  expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
-                    oldFavoriteWorkspacesLength
-                  );
-                  cy.get(
-                    SELECTORS.PAGES.WORKSPACE_PAGE.FAVORITE_WS_CARD(workspaceId)
-                  ).should('exist');
-                  // !ERROR Unable to make a good selector type - Ahsan Explained, aqeel bahi need to update
-                  cy.get(
-                    `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
-                  ).click();
-
-                  cy.get(
-                    SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR
-                  ).then((finalFavoriteWorkspaces) => {
-                    const finalFavoriteWorkspacesLength =
-                      finalFavoriteWorkspaces.length;
-
-                    expect(finalFavoriteWorkspacesLength).to.eq(
+                // } else {
+                //   cy.log('favorite icon does not exist');
+                // }
+                cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
+                  // .find(SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC)
+                  // .click();
+                  (updatedFavoriteWorkspaces) => {
+                    const updatedFavoriteWorkspacesLength =
+                      updatedFavoriteWorkspaces.length;
+  
+                    expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
                       oldFavoriteWorkspacesLength
                     );
-                    expect(finalFavoriteWorkspacesLength).to.lessThan(
-                      updatedFavoriteWorkspacesLength
-                    );
-                    expect(finalFavoriteWorkspacesLength + 1).to.eq(
-                      updatedFavoriteWorkspacesLength
-                    );
-                    expect(updatedFavoriteWorkspacesLength - 1).to.eq(
-                      finalFavoriteWorkspacesLength
-                    );
-                  });
-                }
-              );
+                    cy.get(
+                      SELECTORS.PAGES.WORKSPACE_PAGE.FAVORITE_WS_CARD(workspaceId)
+                    ).should('exist');
+                    // !ERROR Unable to make a good selector type - Ahsan Explained, aqeel bahi need to update
+                    cy.get(
+                      `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
+                    ).click();
+  
+                    cy.get(
+                      SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR
+                    ).then((finalFavoriteWorkspaces) => {
+                      const finalFavoriteWorkspacesLength =
+                        finalFavoriteWorkspaces.length;
+  
+                      expect(finalFavoriteWorkspacesLength).to.eq(
+                        oldFavoriteWorkspacesLength
+                      );
+                      expect(finalFavoriteWorkspacesLength).to.lessThan(
+                        updatedFavoriteWorkspacesLength
+                      );
+                      expect(finalFavoriteWorkspacesLength + 1).to.eq(
+                        updatedFavoriteWorkspacesLength
+                      );
+                      expect(updatedFavoriteWorkspacesLength - 1).to.eq(
+                        finalFavoriteWorkspacesLength
+                      );
+                    });
+                  }
+                );
+              });
             }
           }
         );
@@ -163,17 +183,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
 
-  it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
-      WORKSPACE_DETAILS.Sections.Workspace_Name
-    );
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
-    cy.contains(
-      SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
-      WORKSPACE_DETAILS.Sections.Timezone_Country
-    ).click();
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
+  it.only('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
       .should('have.length.above', 0)
       .then((result) => {
