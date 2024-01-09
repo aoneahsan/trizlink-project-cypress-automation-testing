@@ -1,4 +1,4 @@
-import { WORKSPACE_DETAILS } from '@trzData/workspace';
+import { DATA, WORKSPACE_DETAILS } from '@trzData/workspace';
 import { APP_ROUTES } from '@trzUtils/app-routes';
 import { API_METHODS } from '@trzUtils/enums';
 import { authenticateUserBeforeEachHook } from '@trzUtils/helpers/authenticate-user-beforeEach-hook';
@@ -12,7 +12,7 @@ describe('Workspace page tests after entering user login credentials', () => {
 
     cy.visit(APP_ROUTES.WORKSPACE.LIST);
   });
-
+  // DONE
   it('should be able to click on the workspace box and check weather the new workspace page is visible or not.', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).should(
       'be.visible'
@@ -25,7 +25,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
     cy.go('back');
   });
-
+  // DONE
   it('should be able to click on the workspace and create workspace by entering details and check weather the new workspace which is created is visible or not', () => {
     cy.intercept(
       'https://zlinkbackend.zaions.com/api/zlink/v1/user/workspaces',
@@ -69,24 +69,24 @@ describe('Workspace page tests after entering user login credentials', () => {
 
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Name_input).type(
-      WORKSPACE_DETAILS.Sections.Workspace_Name
+      DATA.WORKSPACE_DETAILS.Sections.Workspace_Name
     );
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
 
     cy.contains(
-      SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
-      WORKSPACE_DETAILS.Sections.Timezone_Country
+      SELECTORS.PAGES.WORKSPACE_PAGE.DROPDOWN_TIMEZONE,
+      DATA.WORKSPACE_DETAILS.Sections.Timezone_Country
     ).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).click();
   });
-
+  // DONE
   it('should not be able to create a new workspace by not entering the workspace name ', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Workspace_Card).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Timezone).click();
     // cy.contains('(UTC+05:00) Islamabad, Karachi');
     cy.contains(
-      SELECTORS.PAGES.WORKSPACE_PAGE.Dropdown_Timezone,
-      WORKSPACE_DETAILS.Sections.Timezone_Country
+      SELECTORS.PAGES.WORKSPACE_PAGE.DROPDOWN_TIMEZONE,
+      DATA.WORKSPACE_DETAILS.Sections.Timezone_Country
     ).click();
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Create_Btn_New_Workspace).should(
       'not.be.enabled'
@@ -99,8 +99,8 @@ describe('Workspace page tests after entering user login credentials', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SECTION).then(
       (oldFavoriteWorkspaces) => {
         const oldFavoriteWorkspacesLength = oldFavoriteWorkspaces.length;
-        console.log(oldFavoriteWorkspacesLength)
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).then(
+        console.log(oldFavoriteWorkspacesLength);
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR).then(
           (result) => {
             if (result.length > 0) {
               const firstWorkspaceElement = result[1];
@@ -125,10 +125,11 @@ describe('Workspace page tests after entering user login credentials', () => {
                 // if (
                 //   SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC.length !== 0
                 // ) {
-                const FavIconEl = result.find(SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC)
+                const FavIconEl = result.find(
+                  SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC
+                );
                 console.log(FavIconEl);
-                cy.wrap(FavIconEl).click()
-                ;
+                cy.wrap(FavIconEl).click();
                 // if (FavIconEl.length !== 0) {
                 //   cy.get()
                 // }
@@ -136,30 +137,34 @@ describe('Workspace page tests after entering user login credentials', () => {
                 // } else {
                 //   cy.log('favorite icon does not exist');
                 // }
-                cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR).then(
+                cy.get(
+                  SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR
+                ).then(
                   // .find(SELECTORS.PAGES.WORKSPACE_PAGE.Favorite_Icon_NWC)
                   // .click();
                   (updatedFavoriteWorkspaces) => {
                     const updatedFavoriteWorkspacesLength =
                       updatedFavoriteWorkspaces.length;
-  
+
                     expect(updatedFavoriteWorkspacesLength).to.be.greaterThan(
                       oldFavoriteWorkspacesLength
                     );
                     cy.get(
-                      SELECTORS.PAGES.WORKSPACE_PAGE.FAVORITE_WS_CARD(workspaceId)
+                      SELECTORS.PAGES.WORKSPACE_PAGE.FAVORITE_WS_CARD(
+                        workspaceId
+                      )
                     ).should('exist');
                     // !ERROR Unable to make a good selector type - Ahsan Explained, aqeel bahi need to update
                     cy.get(
                       `[cy-es="ztes__wlp-card-favorites-btn-${workspaceId}"]`
                     ).click();
-  
+
                     cy.get(
                       SELECTORS.PAGES.WORKSPACE_PAGE.FWS_ElEMENT_SELECTOR
                     ).then((finalFavoriteWorkspaces) => {
                       const finalFavoriteWorkspacesLength =
                         finalFavoriteWorkspaces.length;
-  
+
                       expect(finalFavoriteWorkspacesLength).to.eq(
                         oldFavoriteWorkspacesLength
                       );
@@ -182,23 +187,23 @@ describe('Workspace page tests after entering user login credentials', () => {
       }
     );
   });
-
-  it.only('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+  // !: Unable to complete test, facing some problems while making assertions.
+  it('should be able to click on a specific card and delete the card and check weather the card is removed or not', () => {
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
       .should('have.length.above', 0)
       .then((result) => {
         // you said second, but you are selecting 3rd element (index start from 0)
         const SecondElement = result[1];
 
-        // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector)
+        // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
         //   .eq(1)
-        //   .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
+        //   .find(SELECTORS.PAGES.WORKSPACE_PAGE.ELLIPSE_GENERAL_SELECTOR)
         //   .click();
         cy.wrap(SecondElement)
-          .find(SELECTORS.PAGES.WORKSPACE_PAGE.Ellipses_General_Selector)
+          .find(SELECTORS.PAGES.WORKSPACE_PAGE.ELLIPSE_GENERAL_SELECTOR)
           .click();
 
-        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Workspace_Dlt_Btn).click();
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.WSC_DELETE_SELECTOR).click();
         cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Delete_Btn_Alert).click();
         // cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.Owned_Workspace_Section).should('have.length', initialLength - 1);
         // cy.log(`Workspace Length After Deletion: ${initialLength - 1}`);
@@ -228,35 +233,107 @@ describe('Workspace page tests after entering user login credentials', () => {
       }
     );
   });
-  it('should be able to click on a specific card and delete the card and click on setting and check we can update workspace by making a change in the name or timezone', () => {
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector).should(
-      'have.length.above',
-      0
-    );
-    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_Element_Selector);
-    // cy.deleteCardAndAssertLength();
-    // new workspace card (NWC)
-    cy.intercept(
-      'https://zlinkbackend.zaions.com/api/zlink/v1/user/workspaces/65800053529b5',
-      (_request) => {
-        if (_request.method === API_METHODS.DELETE) {
-          _request.continue((_response) => {
-            const resBody = _response.body as {
-              success: boolean;
-              message: string;
-              data: any;
-              error: any;
-            };
-            // console.log({ res, resBody });
+  // TODO THE TEST IS COMPLETED BUT SOMEHOW IT DOES NOT WAIT FOR THE WORKSPACE NAME TO ENTER, IT JUST CLICKS ON THE UPDATE BUTTON AND FAILS THE TEST
+  it('should be able to click on a specific card and click on setting and check we can update workspace by making a change in the name or timezone', () => {
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
+      .should('have.length.above', 0)
+      .then((result) => {
+        const SecondElement = result[0];
+        cy.wrap(SecondElement)
+          .find(SELECTORS.PAGES.WORKSPACE_PAGE.ELLIPSE_GENERAL_SELECTOR)
+          .click();
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.WSC_SETTING_SELECTOR).click();
+        expect(SELECTORS.PAGES.WSM_PAGE.WSM_PAGE_SELECTOR).to.exist;
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT)
+          .should('exist') // Check if the element exists
+          .should('be.visible') // Check if the element is visible
+          .invoke('val', ''); // Set an empty value to clear the input field
 
-            expect(resBody.success).to.be.true;
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT).type(
+          DATA.WORKSPACE_DETAILS.UPDATED_DATA.WORKSPACE_NAME()
+        );
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_TIMEZONE).click();
+        cy.contains(
+          SELECTORS.PAGES.WORKSPACE_PAGE.DROPDOWN_TIMEZONE,
+          DATA.WORKSPACE_DETAILS.Sections.Timezone_Country
+        ).click();
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_UPDATE_BTN).click();
+        // cy.click(-20, -20);
+        cy.intercept(
+          'https://zlinkbackend.zaions.com/api/zlink/v1/user/workspaces/657c8631819d8',
+          (_request) => {
+            if (_request.method === API_METHODS.PUT) {
+              _request.continue((_response) => {
+                const resBody = _response.body as {
+                  success: boolean;
+                  message: string;
+                  data: any;
+                  error: any;
+                };
+                // console.log({ res, resBody });
 
-            expect(resBody?.data?.items).to.have.length.gt(0);
-          });
-        } else {
-          cy.log('INCORRECT ENTRIES ENTERED');
-        }
-      }
-    );
+                expect(resBody.success).to.be.true;
+
+                expect(resBody?.data?.items).to.have.length.gt(0);
+              });
+            } else {
+              cy.log('INCORRECT ENTRIES ENTERED');
+            }
+          }
+        );
+      });
+  });
+  // DONE
+  it('should be able to click on a specific card and click on setting and check update button is disabled by changing the name or timezone', () => {
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
+      .should('have.length.above', 0)
+      .then((result) => {
+        const SecondElement = result[0];
+        cy.wrap(SecondElement)
+          .find(SELECTORS.PAGES.WORKSPACE_PAGE.ELLIPSE_GENERAL_SELECTOR)
+          .click();
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.WSC_SETTING_SELECTOR).click();
+        expect(SELECTORS.PAGES.WSM_PAGE.WSM_PAGE_SELECTOR).to.exist;
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT)
+          .should('exist') // Check if the element exists
+          .should('be.visible') // Check if the element is visible
+          .invoke('val', ''); // Set an empty value to clear the input field
+
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT).click();
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_UPDATE_BTN).should(
+          'not.be.enabled'
+        );
+      });
+  });
+  it('should be able to click on a specific card and then delete that workspace from workspace management page.', () => {
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
+      .should('have.length.above', 0)
+      .then((result) => {
+        const SecondElement = result[0];
+        cy.wrap(SecondElement)
+          .find(SELECTORS.PAGES.WORKSPACE_PAGE.ELLIPSE_GENERAL_SELECTOR)
+          .click();
+        cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.WSC_SETTING_SELECTOR).click();
+        expect(SELECTORS.PAGES.WSM_PAGE.WSM_PAGE_SELECTOR).to.exist;
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT)
+          .should('exist') // Check if the element exists
+          .should('be.visible') // Check if the element is visible
+          .invoke('val', ''); // Set an empty value to clear the input field
+
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT).click();
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_DELETE_WORKSPACE_BTN).click();
+        cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_POPOVER_DELETE_BTN).click();
+      });
+  });
+  it.only('should be able to click on a specific card and then delete that workspace from workspace management page.', () => {
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
+      .should('have.length.above', 0)
+      .then((result) => {
+        const FirstElement = result[0];
+        cy.wrap(FirstElement)
+          .find(SELECTORS.PAGES.WORKSPACE_PAGE.WORKSPACE_VIEW_BTN)
+          .click();
+        cy.get(SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.CREATE_NEW_LINK_BTN).should('be.visible')
+      });
   });
 });
