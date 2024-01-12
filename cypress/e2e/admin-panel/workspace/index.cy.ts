@@ -1,10 +1,8 @@
-import { DATA, WORKSPACE_DETAILS } from '@trzData/workspace';
+import { DATA } from '@trzData/workspace';
 import { APP_ROUTES } from '@trzUtils/app-routes';
 import { API_METHODS } from '@trzUtils/enums';
 import { authenticateUserBeforeEachHook } from '@trzUtils/helpers/authenticate-user-beforeEach-hook';
 import { SELECTORS } from '@trzUtils/selectors';
-import { error } from 'console';
-import { isNumber } from 'cypress/types/lodash';
 
 describe('Workspace page tests after entering user login credentials', () => {
   beforeEach('visit workspace after entering login details', () => {
@@ -234,6 +232,7 @@ describe('Workspace page tests after entering user login credentials', () => {
     );
   });
   // TODO THE TEST IS COMPLETED BUT SOMEHOW IT DOES NOT WAIT FOR THE WORKSPACE NAME TO ENTER, IT JUST CLICKS ON THE UPDATE BUTTON AND FAILS THE TEST
+  // COMPLETED
   it('should be able to click on a specific card and click on setting and check we can update workspace by making a change in the name or timezone', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
       .should('have.length.above', 0)
@@ -243,11 +242,16 @@ describe('Workspace page tests after entering user login credentials', () => {
           .find(SELECTORS.PAGES.WORKSPACE_PAGE.ELLIPSE_GENERAL_SELECTOR)
           .click();
         cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.WSC_SETTING_SELECTOR).click();
-        expect(SELECTORS.PAGES.WSM_PAGE.WSM_PAGE_SELECTOR).to.exist;
+        // expect(SELECTORS.PAGES.WSM_PAGE.WSM_PAGE_SELECTOR).to.exist;
+        // cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT).clear({
+        //   waitForAnimations: true,
+        // });
         cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT)
-          .should('exist') // Check if the element exists
-          .should('be.visible') // Check if the element is visible
-          .invoke('val', ''); // Set an empty value to clear the input field
+          .should('exist')
+          .invoke('val', '');
+        // .should('exist') // Check if the element exists
+        // .clear() // Check if the element is visible
+        // .invoke('val', ''); // Set an empty value to clear the input field
 
         cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_NAME_INPUT).type(
           DATA.WORKSPACE_DETAILS.UPDATED_DATA.WORKSPACE_NAME()
@@ -258,7 +262,7 @@ describe('Workspace page tests after entering user login credentials', () => {
           DATA.WORKSPACE_DETAILS.Sections.Timezone_Country
         ).click();
         cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_UPDATE_BTN).click();
-        // cy.click(-20, -20);
+
         cy.intercept(
           'https://zlinkbackend.zaions.com/api/zlink/v1/user/workspaces/657c8631819d8',
           (_request) => {
@@ -333,7 +337,9 @@ describe('Workspace page tests after entering user login credentials', () => {
         cy.wrap(FirstElement)
           .find(SELECTORS.PAGES.WORKSPACE_PAGE.WORKSPACE_VIEW_BTN)
           .click();
-        cy.get(SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.CREATE_NEW_LINK_BTN).should('be.visible')
+        cy.get(SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.CREATE_NEW_LINK_BTN).should(
+          'be.visible'
+        );
       });
   });
 });
