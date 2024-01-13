@@ -329,7 +329,7 @@ describe('Workspace page tests after entering user login credentials', () => {
         cy.get(SELECTORS.PAGES.WSM_PAGE.WSMP_POPOVER_DELETE_BTN).click();
       });
   });
-  it.only('should be able to click on a specific card and then delete that workspace from workspace management page.', () => {
+  it('should be able to click on the view button of a specific card and then check we reach on short link list page.', () => {
     cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
       .should('have.length.above', 0)
       .then((result) => {
@@ -339,6 +339,44 @@ describe('Workspace page tests after entering user login credentials', () => {
           .click();
         cy.get(SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.CREATE_NEW_LINK_BTN).should(
           'be.visible'
+        );
+      });
+  });
+  it.only('Should be able to create a new folder in ShortLink List Page', () => {
+    cy.get(SELECTORS.PAGES.WORKSPACE_PAGE.OWS_ELEMENT_SELECTOR)
+      .should('have.length.above', 0)
+      .then((result) => {
+        const FirstElement = result[0];
+        cy.wrap(FirstElement)
+          .find(SELECTORS.PAGES.WORKSPACE_PAGE.WORKSPACE_VIEW_BTN)
+          .click();
+        cy.get(
+          SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.NEW_FOLDER_CREATE_BTN_SLM
+        ).click();
+        expect(SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.NEW_FOLDER_ION_MODEL).to
+          .exist;
+        cy.get(SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.NEW_FOLDER_NAME_INPUT).type(
+          DATA.WORKSPACE_DETAILS.UPDATED_DATA.WORKSPACE_NAME()
+        );
+        cy.get(
+          SELECTORS.PAGES.SHORT_LINK_LIST_PAGE.CREATE_BTN_NEW_FOLDER_IM
+        ).click();
+        cy.intercept(
+          SELECTORS.PAGES.URLS.CREATE_NEW_FOLDER_API,
+          (_request) => {
+            if (_request.method === API_METHODS.POST) {
+              _request.continue((_response) => {
+                const responseBody = _response.body as {
+                  success: boolean;
+                  message: string;
+                  data: any;
+                  error: any;
+                };
+                expect(responseBody.success).to.be.true;
+                expect(responseBody?.data?.item).to.have.id('65a26409115f7')
+              });
+            }
+          }
         );
       });
   });

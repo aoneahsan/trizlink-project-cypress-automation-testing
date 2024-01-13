@@ -41,7 +41,14 @@ export const SELECTORS = {
       WSMP_POPOVER_DELETE_BTN: '.alert-button-role-danger'
     },
     SHORT_LINK_LIST_PAGE: {
-      CREATE_NEW_LINK_BTN: '[cy-es="ztes__slp-create-btn"]'
+      CREATE_NEW_LINK_BTN: '[cy-es="ztes__slp-create-btn"]',
+      // * SLM STANDS FOR SHORT LINK LIST MANAGEMENT PAGE
+      NEW_FOLDER_CREATE_BTN_SLM: '[cy-es="ztes__f-create-btn-shortLink"]',
+      // TODO UNABLE TO MAKE A SPECIFIC SELECTOR FOR NEW FOLDER CREATION MODEL PAGE AS IT IS AN IONIC FRAMEWORK
+      NEW_FOLDER_ION_MODEL: '.link-in-bio-folder-modal .ion-page',
+      NEW_FOLDER_NAME_INPUT: '[cy-es="ztes__folder-fm-name-input"]',
+      // * IM STANDS FOR ION MODEL
+      CREATE_BTN_NEW_FOLDER_IM: '[cy-es="ztes__folder-fm-submit-form-btn"]'
     },
     GENERAL: {
       // OR Text( this is mainly to unfocused the text input field to get error messages)
@@ -50,6 +57,8 @@ export const SELECTORS = {
     URLS: {
       Login_Page: 'https://prettylinks.zaions.com/sign-in',
       Forget_Password_Page: 'https://prettylinks.zaions.com/forgot-password',
+      SHORT_LINK_LIST_PAGE: 'https://prettylinks.zaions.com/app/workspaces/657c8631819d8/short-links/list/',
+      CREATE_NEW_FOLDER_API: 'https://zlinkbackend.zaions.com/api/zlink/v1/user/personalWorkspace/657c8631819d8/folder'
     }
   }
 } as const;
